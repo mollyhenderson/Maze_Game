@@ -17,6 +17,7 @@ public class GridCreator : MonoBehaviour {
 	public Transform CellPrefab;
 	public Vector3 Size;
 	public Transform[,] Grid;
+	public GUIManager g;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,7 @@ public class GridCreator : MonoBehaviour {
 		SetAdjacents();
 		SetStart();
 		FindNext();
+
 	}
 
 	// Creates the grid by instantiating provided cell prefabs.
@@ -169,6 +171,7 @@ public class GridCreator : MonoBehaviour {
 
 			// The maze is complete.
 			if (isEmpty) { 
+				g.GameStart ();
 				Debug.Log("Generation completed in " + Time.timeSinceLevelLoad + " seconds."); 
 				CancelInvoke("FindNext");
 				PathCells[PathCells.Count - 1].renderer.material.color = Color.yellow;
