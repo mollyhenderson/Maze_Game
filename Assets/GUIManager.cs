@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GUIManager : MonoBehaviour {
 
-	public GUIText gameStartText, levelText;
+	public GUIText gameStartText, levelText, levelCompletedText;
 	public GUITexture loadingScreen;
 	public GUITexture crossHair;
 
@@ -15,8 +15,13 @@ public class GUIManager : MonoBehaviour {
 	public void GameStart() {
 		levelText.enabled = false;
 		gameStartText.enabled = false;
+		levelCompletedText.enabled = false;
 		loadingScreen.enabled = false;
 		crossHair.enabled = true;
+	}
+
+	public void LevelCompleted() {
+		levelCompletedText.enabled = true;
 	}
 	
 	// Update is called once per frame

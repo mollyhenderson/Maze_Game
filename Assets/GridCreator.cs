@@ -2,22 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 
-/**
- * Creates a grid of specified dimensions and generates a procedural maze using a
- * modified form of Prim's Algorithm.
- * @author Timothy Sesler
- * @author tds45
- * @date 4 February 2014
- * 
- * Adapted from work provided online by Austin Takechi 
- * Contact: MinoruTono@Gmail.com
- */ 
+
 public class GridCreator : MonoBehaviour {
 	
 	public Transform CellPrefab;
 	public Vector3 Size;
 	public Transform[,] Grid;
 	public GUIManager g;
+	public GameEventManager game;
+	public Transform character;
+	public MouseLook m;
+	public Vector3 finishLoc;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -125,6 +122,7 @@ public class GridCreator : MonoBehaviour {
 
 	// Initializes the sets and the starting cell.
 	void SetStart () {
+		setPerimeter();
 		PathCells = new List<Transform>();
 		AdjSet = new List<List<Transform>>();
 		
@@ -171,11 +169,14 @@ public class GridCreator : MonoBehaviour {
 
 			// The maze is complete.
 			if (isEmpty) { 
+
+				Debug.Log("Generation completed in " + Time.timeSinceLevelLoad + " seconds.");
 				g.GameStart ();
-				Debug.Log("Generation completed in " + Time.timeSinceLevelLoad + " seconds."); 
 				CancelInvoke("FindNext");
 				PathCells[PathCells.Count - 1].renderer.material.color = Color.yellow;
-				
+				finishLoc = PathCells[PathCells.Count - 1].localPosition;
+				Debug.Log (finishLoc.x + "" + finishLoc.z);
+				m.finishLoc = finishLoc;
 				foreach (Transform cell in Grid) {
 					// Removes displayed weight
 					cell.GetComponentInChildren<TextMesh>().renderer.enabled = false;
@@ -186,7 +187,7 @@ public class GridCreator : MonoBehaviour {
 						cell.renderer.material.color = Color.red;
 					}
 				}
-				setPerimeter();
+
 				return;
 			}
 			// If we did not finish, then:
@@ -259,4 +260,5 @@ public class GridCreator : MonoBehaviour {
 			Application.LoadLevel(0);	
 		}
 	}
+
 }

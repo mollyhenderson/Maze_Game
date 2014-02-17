@@ -48,11 +48,11 @@
   <ItemGroup>
      <Compile Include="Assets\CellScript.cs" />
      <Compile Include="Assets\GUIManager.cs" />
+     <Compile Include="Assets\GameEventManager.cs" />
      <Compile Include="Assets\GridCreator.cs" />
+     <Compile Include="Assets\MouseLook.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{87FC7009-5168-48FF-3531-FD6129192EDD}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
       <Project>{EBA079AF-01DB-B770-F170-DAE70FDD6F7D}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
