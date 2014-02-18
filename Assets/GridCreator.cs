@@ -17,7 +17,7 @@ public class GridCreator : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 		CreateGrid();
 		SetRandomNumbers();
 		SetAdjacents();

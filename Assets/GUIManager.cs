@@ -6,6 +6,7 @@ public class GUIManager : MonoBehaviour {
 	public GUIText gameStartText, levelText, levelCompletedText;
 	public GUITexture loadingScreen;
 	public GUITexture crossHair;
+	public MouseLook m;
 
 	// Use this for initialization
 	void Start () {
